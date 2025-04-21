@@ -21,8 +21,8 @@
   },
   "scripts": {
     "clean": "rimraf lib",
-    "watch": "webpack --watch",
-    "build": "webpack",
+    "watch": "NODE_OPTIONS=--openssl-legacy-provider webpack --watch",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider webpack",
     "prepare": "npm run clean && npm run build",
     "prepare:server": "cd intellisense && npm install && cd .. && npm run build-server && npm run minify-server",
     "build-server": "glob-exec --foreach --parallel \"intellisense/packages/tailwindcss-intellisense/src/server.ts\" -- \"ncc build {{file}} -o lib-server/{{file.toString().replace(/^src\\//, '').replace(/\\.ts$/, '')}}\"",
